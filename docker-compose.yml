@@ -1,0 +1,48 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: paises_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: myuser 
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"  
+      - "15672:15672"  # interfaz admin
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    networks:
+      - default
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+
+  api:
+    build:
+      context: .  
+      dockerfile: Dockerfile 
+    volumes:
+      - .:/api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - rabbitmq
+    restart: on-failure
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    networks:
+      - default
+
+volumes:
+  mysql_data:
+  rabbitmq_data:

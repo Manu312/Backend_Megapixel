@@ -1,0 +1,8 @@
+djangorestframework
+django
+mysqlclient
+celery
+python-decouple
+amqp
+django-celery-results
+requests
