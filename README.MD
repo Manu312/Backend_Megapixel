@@ -47,3 +47,16 @@ O si queremos filtrar por id por ejemplo: 'http://localhost:8000/countries/70/'
 
 ### 5. Resultados Obtenidos.
 
+Yo probe configurando la ejecucion de la tarea cada 1 minuto.
+
+![alt text](image.png)
+
+Aca podemos ver el resultado de listar los paises
+
+![alt text](image-1.png)
+
+Y aca accediendo por id
+
+![alt text](image-2.png)
+
+### Muchas gracias por darme la oportunidad.
