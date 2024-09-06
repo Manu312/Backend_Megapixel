@@ -27,6 +27,11 @@ docker-compose up
 docker-compose build
 ```
 
+```bash
+docker-compose exec api python manage.py makemigrations
+docker-compose exec api python manage.py migrate
+```
+
 ### 3. Ejecutar la tarea programada.
 
 Debemos primero iniciar el worker de celery
@@ -50,6 +55,11 @@ O si queremos filtrar por id por ejemplo: 'http://localhost:8000/countries/70/'
 Yo probe configurando la ejecucion de la tarea cada 1 minuto.
 
 ![alt text](image.png)
+
+Si queremos ver las tareas debemos crearnos un superusuario.
+```bash
+python manage.py createsuperuser
+```
 
 Aca podemos ver el resultado de listar los paises
 
